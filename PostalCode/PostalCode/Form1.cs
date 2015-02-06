@@ -15,7 +15,7 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json;
 
-//geocoding api key: &key=AIzaSyDvkrmvwL3RkHRNsqxP2IHHXjOqi5JU59g
+//geocoding api key: 
 //neighbourhood url example: https://maps.googleapis.com/maps/api/geocode/json?address=Winnetka&key=API_KEY
 //address url example: https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=API_KEY
 //address="1600+Amphitheatre+Parkway,+Mountain+View,+CA"
@@ -73,7 +73,7 @@ namespace PostalCode
             String locationInfo;
             String url = "https://maps.googleapis.com/maps/api/geocode/json?address=";
             //need to build array of keys
-            String key = "&key=AIzaSyDvkrmvwL3RkHRNsqxP2IHHXjOqi5JU59g";
+            String key = "";
             StringBuilder builder = new StringBuilder(address);
             int length = address.Length;
 
@@ -146,6 +146,12 @@ namespace PostalCode
         private void quitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void getData()
+        {
+            String connectionString = "Data Source=WIN-FSBHP3NVE9G;Initial Catalog=TRAFFIC_COLLISION;Integrated Security=True";
+
         }
 
     }
