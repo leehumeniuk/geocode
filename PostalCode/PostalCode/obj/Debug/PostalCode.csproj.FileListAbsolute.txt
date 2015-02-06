@@ -11,3 +11,16 @@ C:\Users\Administrator\Documents\VSProjects\PostalCode\PostalCode\bin\Debug\Noes
 C:\Users\Administrator\Documents\VSProjects\PostalCode\PostalCode\obj\Debug\PostalCode.csproj.ResolveComReference.cache
 C:\Users\Administrator\Documents\VSProjects\PostalCode\PostalCode\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Administrator\Documents\VSProjects\PostalCode\PostalCode\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\bin\Debug\PostalCode.exe.config
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\obj\Debug\PostalCode.csproj.ResolveComReference.cache
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\obj\Debug\PostalCode.exe
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\obj\Debug\PostalCode.pdb
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\bin\Debug\PostalCode.exe
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\bin\Debug\PostalCode.pdb
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\bin\Debug\Noesis.Javascript.dll
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\obj\Debug\PostalCode.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\obj\Debug\PostalCode.Form1.resources
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\obj\Debug\PostalCode.Properties.Resources.resources
+C:\Users\Administrator\Documents\GitHub\geocode\PostalCode\PostalCode\obj\Debug\PostalCode.csproj.GenerateResource.Cache
