@@ -22,7 +22,6 @@ using System.Xml.Linq;
 
 
 
-
 namespace PostalCode
 {
     public partial class Form1 : Form
@@ -30,7 +29,7 @@ namespace PostalCode
         public Form1()
         {
             InitializeComponent();
-            
+
         }
 
 
@@ -49,8 +48,7 @@ namespace PostalCode
             String city = ",+Edmonton,+AB,+CA";
             String locationInfo;
             String url = "https://maps.googleapis.com/maps/api/geocode/xml?address=";
-            //need to build array of keys
-            String key = "&key=AIzaSyDvkrmvwL3RkHRNsqxP2IHHXjOqi5JU59g";
+            String key = "&key=";//append API Key
             StringBuilder builder = new StringBuilder(address);
             int length = address.Length;
 
@@ -91,7 +89,6 @@ namespace PostalCode
             String address = null;
             String postal_code = null;
 
-
             for (int i = 0; i < dataset.Count; i++)
             {
                 //set url
@@ -103,6 +100,8 @@ namespace PostalCode
                 client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");//arbitrary header
                 data = client.OpenRead(url);
                 xml = XDocument.Load(data);
+
+                //parsing XML
                 foreach (XElement xe in xml.Descendants("type").Where(x => x.Value.Equals("postal_code")))
                 {
                     node = xe.PreviousNode.PreviousNode;
@@ -119,7 +118,6 @@ namespace PostalCode
 
 
                         //write to DB
-                        //Console.WriteLine(postal_code);
                         insertData(postal_code, address);
                     }
                 }
@@ -127,10 +125,8 @@ namespace PostalCode
             }
 
             data.Close();
-          
+            messageLabel.Text = "Completed";
 
-
-            
         }
 
         private void messageLabel_Click(object sender, EventArgs e)
@@ -148,33 +144,32 @@ namespace PostalCode
             String connectionString = "Data Source=WIN-FSBHP3NVE9G;Initial Catalog=TRAFFIC_COLLISION;Integrated Security=True";
             SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand command;
-            String sql = "SELECT TOP 1000 Location FROM Combined_Data";
+            String sql = "SELECT DISTINCT TOP 2500 Location FROM Distinct_Location WHERE Postal_Code IS NULL";
             SqlDataReader dataReader;
             ArrayList results = new ArrayList();
             String value;
 
-                try
+            try
+            {
+                conn.Open();
+                command = new SqlCommand(sql, conn);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
                 {
-                    conn.Open();
-                    command = new SqlCommand(sql, conn);
-                    dataReader = command.ExecuteReader();
-                    while (dataReader.Read())
-                    {
-                        //MessageBox.Show(dataReader.GetValue(0) + " - " + dataReader.GetValue(1) + " - " + dataReader.GetValue(2));
-                        value = dataReader.GetValue(0).ToString();
-                        results.Add(value);
-                        
-                    }
-                    dataReader.Close();
-                    command.Dispose();
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Cannot open connection ! ");
-                }
+                    value = dataReader.GetValue(0).ToString();
+                    results.Add(value);
 
-                return results;
+                }
+                dataReader.Close();
+                command.Dispose();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot open connection ! ");
+            }
+
+            return results;
 
         }
 
@@ -183,7 +178,7 @@ namespace PostalCode
         {
             String connectionString = "Data Source=WIN-FSBHP3NVE9G;Initial Catalog=TRAFFIC_COLLISION;Integrated Security=True";
             SqlConnection conn = new SqlConnection(connectionString);
-            String sql = "UPDATE Combined_Data SET Postal_Code = '"+postal_code+"' WHERE Location = '"+address+"'";
+            String sql = "UPDATE Distinct_Location SET Postal_Code = '" + postal_code + "' WHERE Location = '" + address + "'";
             SqlCommand command = new SqlCommand(sql, conn);
 
             try
